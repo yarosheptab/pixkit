@@ -68,8 +68,8 @@ export function Topbar({ breadcrumbs, title }: TopbarProps) {
 
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
         <div
+          className="topbar-search"
           style={{
-            display: "flex",
             alignItems: "center",
             gap: "7px",
             background: "var(--muted)",

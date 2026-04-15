@@ -74,11 +74,16 @@ const NAV_ITEMS = [
   { href: "/exif",         icon: <IconExif />,        label: "EXIF" },
 ]
 
-export function Sidebar() {
+interface SidebarProps {
+  className?: string
+}
+
+export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname()
 
   return (
     <aside
+      className={className}
       style={{
         width: "var(--sidebar-w)",
         background: "var(--surface)",

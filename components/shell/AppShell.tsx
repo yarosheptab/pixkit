@@ -1,4 +1,5 @@
 import { Sidebar } from "./Sidebar"
+import { MobileNav } from "./MobileNav"
 import { Topbar } from "./Topbar"
 
 interface BreadcrumbItem {
@@ -14,20 +15,15 @@ interface AppShellProps {
 
 export function AppShell({ children, breadcrumbs, topbarTitle }: AppShellProps) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "var(--sidebar-w) 1fr",
-        minHeight: "100vh",
-      }}
-    >
-      <Sidebar />
-      <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "auto" }}>
+    <div className="app-shell-grid" style={{ minHeight: "100vh" }}>
+      <Sidebar className="app-shell-sidebar" />
+      <div className="app-shell-main" style={{ display: "flex", flexDirection: "column", minHeight: "100vh", overflow: "auto" }}>
         <Topbar breadcrumbs={breadcrumbs} title={topbarTitle} />
         <main style={{ flex: 1 }}>
           {children}
         </main>
       </div>
+      <MobileNav />
     </div>
   )
 }

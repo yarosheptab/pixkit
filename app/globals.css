@@ -144,3 +144,137 @@ body {
 .blog-card-link:hover .blog-card-title {
   color: var(--accent) !important;
 }
+
+/* ─── Responsive layout helpers ─────────────────────────────────────────── */
+
+/* AppShell: hide sidebar on mobile, switch to single column */
+.app-shell-grid {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100vh;
+}
+
+/* Sidebar: hide on mobile */
+.app-shell-sidebar {
+  /* visible by default */
+}
+
+/* Bottom nav: hidden on desktop, shown on mobile */
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* Hero section: two-column on tablet+, single-column on mobile */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Tool grid: 3 columns on desktop, 2 on tablet, 1 on mobile */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* Controls panel: 2-column on tablet+, stacked on mobile */
+.controls-panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+
+/* Topbar search: hide on mobile */
+.topbar-search {
+  display: flex;
+}
+
+@media (max-width: 639px) {
+  /* Hide sidebar, use full-width single column */
+  .app-shell-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-shell-sidebar {
+    display: none !important;
+  }
+  /* Show bottom nav on mobile */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    z-index: 100;
+  }
+  /* Push content above bottom nav */
+  .app-shell-main {
+    padding-bottom: 56px;
+  }
+  /* Hero: stack vertically */
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Drop zone in hero: hide on mobile (space constrained) */
+  .hero-dropzone {
+    display: none !important;
+  }
+  /* Tool grid: 2 columns on mobile */
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Controls panel: stack vertically */
+  .controls-panel-grid {
+    grid-template-columns: 1fr;
+  }
+  .controls-panel-grid > div + div {
+    border-left: none !important;
+    border-top: 1px solid var(--border);
+  }
+  /* Hide topbar search box on mobile */
+  .topbar-search {
+    display: none !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  /* Small tablet: still hide sidebar but show it narrower */
+  .app-shell-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-shell-sidebar {
+    display: none !important;
+  }
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    z-index: 100;
+  }
+  .app-shell-main {
+    padding-bottom: 56px;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr 180px;
+  }
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+

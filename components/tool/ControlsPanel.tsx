@@ -15,7 +15,7 @@ const paneLabelStyle: React.CSSProperties = {
 
 export function ControlsPanel({ left, right }: ControlsPanelProps) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid var(--border)" }}>
+    <div className="controls-panel-grid">
       <div style={{ padding: "16px 20px" }}>
         <div style={paneLabelStyle}>Original</div>
         {left}

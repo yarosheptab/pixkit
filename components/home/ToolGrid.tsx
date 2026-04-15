@@ -33,7 +33,7 @@ export function ToolGrid() {
         </span>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px" }}>
+      <div className="tool-grid">
         {TOOLS.map((tool) => {
           const isActive = pathname === tool.href
           return (

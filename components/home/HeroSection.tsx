@@ -15,7 +15,7 @@ function ImageIcon() {
 export function HeroSection() {
   return (
     <section style={{ padding: "40px 24px 36px", borderBottom: "1px solid var(--border)" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 200px", gap: "32px", alignItems: "center" }}>
+      <div className="hero-grid" style={{ alignItems: "center" }}>
         <div>
           <h1 style={{ fontSize: "34px", fontWeight: 800, letterSpacing: "-0.05em", lineHeight: 1.05, color: "var(--fg)", marginBottom: "12px" }}>
             Image tools that run{" "}
@@ -46,6 +46,7 @@ export function HeroSection() {
         </div>
 
         <div
+          className="hero-dropzone"
           style={{
             border: "2px dashed var(--accent-border)",
             borderRadius: "12px",
