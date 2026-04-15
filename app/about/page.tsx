@@ -14,8 +14,8 @@ export default function AboutPage() {
           About pixkit
         </h1>
         <p style={{ fontSize: "15px", lineHeight: 1.75, color: "var(--muted-fg)", marginBottom: "20px" }}>
-          pixkit is the third of five tool-kit sub-sites under{" "}
-          <a href="https://yaro-labs.com" style={{ color: "var(--accent)" }}>yaro-labs.com</a>.
+          pixkit is built by{" "}
+          <a href="https://yaro-labs.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Yaro Labs</a>.
           It provides six image utilities that run entirely in your browser — no uploads, no
           account, no waiting.
         </p>

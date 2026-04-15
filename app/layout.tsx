@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import Script from "next/script"
+import { CookieConsent } from "@/components/CookieConsent"
 import "./globals.css"
 
 const geist = Geist({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
         {children}
+        <CookieConsent />
       </body>
     </html>
   )

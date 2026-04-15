@@ -1,6 +1,7 @@
 import { Sidebar } from "./Sidebar"
 import { MobileNav } from "./MobileNav"
 import { Topbar } from "./Topbar"
+import { Footer } from "@/components/Footer"
 
 interface BreadcrumbItem {
   label: string
@@ -22,6 +23,7 @@ export function AppShell({ children, breadcrumbs, topbarTitle }: AppShellProps) 
         <main style={{ flex: 1 }}>
           {children}
         </main>
+        <Footer />
       </div>
       <MobileNav />
     </div>
