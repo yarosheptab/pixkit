@@ -13,8 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/color-picker`, priority: 0.9, changeFrequency: "monthly" },
     { url: `${BASE}/crop`,         priority: 0.9, changeFrequency: "monthly" },
     { url: `${BASE}/exif`,         priority: 0.9, changeFrequency: "monthly" },
-    { url: `${BASE}/blog`,         priority: 0.7, changeFrequency: "weekly" },
-    { url: `${BASE}/about`,        priority: 0.5, changeFrequency: "yearly" },
+    { url: `${BASE}/blog`,         priority: 0.8, changeFrequency: "weekly" },
+    { url: `${BASE}/about`,        priority: 0.4, changeFrequency: "yearly" },
+    { url: `${BASE}/privacy`,      priority: 0.2, changeFrequency: "yearly" },
+    { url: `${BASE}/terms`,        priority: 0.2, changeFrequency: "yearly" },
+    { url: `${BASE}/cookies`,      priority: 0.2, changeFrequency: "yearly" },
   ]
   const blogRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,

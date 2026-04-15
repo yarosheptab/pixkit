@@ -23,13 +23,34 @@ export const metadata: Metadata = {
   },
   description:
     "Free, client-side image tools: resize, convert, compress, crop, color-pick, and read EXIF metadata. No uploads, no account.",
+  keywords: [
+    "image tools",
+    "image resizer",
+    "image converter",
+    "compress image",
+    "crop image online",
+    "color picker",
+    "EXIF reader",
+    "browser image editor",
+    "free image tools",
+  ],
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: "https://pixkit.yaro-labs.com",
     siteName: "pixkit",
     locale: "en_US",
-    images: [{ url: "/og/home.png", width: 1200, height: 630 }],
+    title: "pixkit — Browser Image Utilities",
+    description:
+      "Free, client-side image tools: resize, convert, compress, crop, color-pick, and read EXIF metadata. No uploads, no account.",
+    images: [{ url: "/og/home.png", width: 1200, height: 630, alt: "pixkit — Browser Image Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "pixkit — Browser Image Utilities",
+    description:
+      "Free, client-side image tools: resize, convert, compress, crop, color-pick, and read EXIF metadata. No uploads, no account.",
+    images: ["/og/home.png"],
   },
 }
 
@@ -55,6 +76,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Analytics />
         <CookieConsent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "pixkit",
+              "url": "https://pixkit.yaro-labs.com",
+              "description": "Browser image tools — Resize, Convert, Compress, Crop, Color Picker, EXIF Reader",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Yaro Labs",
+                "url": "https://yaro-labs.com",
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://pixkit.yaro-labs.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   )
