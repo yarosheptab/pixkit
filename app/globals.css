@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+
+:root {
+  --bg:            #fafaf9;
+  --surface:       #ffffff;
+  --muted:         #f5f5f4;
+  --border:        #e7e5e4;
+  --border-2:      #d6d3d1;
+  --fg:            #1c1917;
+  --muted-fg:      #78716c;
+  --subtle:        #a8a29e;
+  --accent:        #0f766e;
+  --accent-2:      #0d9488;
+  --accent-light:  #f0fdfa;
+  --accent-border: #99f6e4;
+  --sidebar-w:     64px;
+  --topbar-h:      50px;
+  --radius:        8px;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --radius-DEFAULT: var(--radius);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar nav button hover */
+.sidebar-nav-btn:hover {
+  background: var(--muted) !important;
+  color: var(--fg) !important;
+}
+
+/* Sidebar tooltip */
+.sidebar-tooltip {
+  display: none;
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--fg);
+  color: #fff;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.sidebar-nav-btn:hover .sidebar-tooltip {
+  display: block;
+}
+
+/* Topbar nav buttons */
+.topbar-nav-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-fg);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 11px;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+.topbar-nav-btn:hover {
+  background: var(--muted);
+  color: var(--fg);
+}
+
+/* Topbar breadcrumb link hover */
+.topbar-crumb-link:hover {
+  color: var(--accent) !important;
+}
+
+/* Tool cards */
+.tool-card:hover {
+  border-color: var(--accent-border) !important;
+}
+
+/* Upload zone */
+.upload-zone:hover {
+  border-color: var(--accent-border) !important;
+  background: var(--accent-light) !important;
+}
+.upload-zone:hover svg {
+  color: var(--accent) !important;
+}
+
+/* EXIF table row hover */
+.exif-row:hover td {
+  background: var(--muted);
+}
+
+/* Blog prose styles */
+.blog-prose p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted-fg);
+  margin-bottom: 20px;
+}
+.blog-prose h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-top: 36px;
+  margin-bottom: 12px;
+}
+.blog-prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+.blog-prose ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.blog-prose li {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted-fg);
+  margin-bottom: 6px;
+}
+.blog-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Blog card link title hover */
+.blog-card-link:hover .blog-card-title {
+  color: var(--accent) !important;
+}
