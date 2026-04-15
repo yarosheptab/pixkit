@@ -10,14 +10,17 @@ import { loadImage, drawImageToCanvas, canvasToBlob, downloadBlob, formatBytes }
 
 export default function CompressPage() {
   const [file, setFile] = useState<File | null>(null)
+  const [origURL, setOrigURL] = useState<string | null>(null)
   const [origW, setOrigW] = useState(0)
   const [origH, setOrigH] = useState(0)
   const [quality, setQuality] = useState(80)
   const [outputSize, setOutputSize] = useState<number | null>(null)
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null)
+  const [outputURL, setOutputURL] = useState<string | null>(null)
 
   const handleFile = useCallback(async (f: File) => {
     setFile(f)
+    setOrigURL(URL.createObjectURL(f))
     const img = await loadImage(f)
     setOrigW(img.naturalWidth)
     setOrigH(img.naturalHeight)
@@ -34,6 +37,7 @@ export default function CompressPage() {
       if (!cancelled) {
         setOutputBlob(blob)
         setOutputSize(blob.size)
+        setOutputURL((prev) => { if (prev) URL.revokeObjectURL(prev); return URL.createObjectURL(blob) })
       }
     })()
     return () => { cancelled = true }
@@ -59,6 +63,13 @@ export default function CompressPage() {
         <ControlsPanel
           left={
             <div>
+              {origURL && (
+                <img
+                  src={origURL}
+                  alt="Original"
+                  style={{ maxWidth: "100%", borderRadius: "6px", border: "1px solid var(--border)", marginBottom: "10px", display: "block" }}
+                />
+              )}
               <div style={{ fontFamily: "var(--font-mono), monospace", fontSize: "11px", color: "var(--muted-fg)", marginBottom: "4px" }}>
                 {origW} x {origH}px
               </div>
@@ -76,6 +87,13 @@ export default function CompressPage() {
                 </div>
                 <input type="range" min={1} max={100} value={quality} onChange={(e) => setQuality(Number(e.target.value))} style={{ width: "100%" }} />
               </div>
+              {outputURL && (
+                <img
+                  src={outputURL}
+                  alt="Compressed output"
+                  style={{ maxWidth: "100%", borderRadius: "6px", border: "1px solid var(--border)", marginBottom: "10px", display: "block" }}
+                />
+              )}
               {outputSize !== null && (
                 <div style={{ marginBottom: "12px" }}>
                   <div style={{ fontFamily: "var(--font-mono), monospace", fontSize: "13px", fontWeight: 600, color: "var(--accent)" }}>

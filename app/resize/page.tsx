@@ -13,6 +13,7 @@ type Mode = "pixels" | "percentage"
 
 export default function ResizePage() {
   const [file, setFile] = useState<File | null>(null)
+  const [origURL, setOrigURL] = useState<string | null>(null)
   const [origW, setOrigW] = useState(0)
   const [origH, setOrigH] = useState(0)
   const [width, setWidth] = useState("")
@@ -22,6 +23,7 @@ export default function ResizePage() {
 
   const handleFile = useCallback(async (f: File) => {
     setFile(f)
+    setOrigURL(URL.createObjectURL(f))
     const img = await loadImage(f)
     setOrigW(img.naturalWidth)
     setOrigH(img.naturalHeight)
@@ -103,6 +105,13 @@ export default function ResizePage() {
         <ControlsPanel
           left={
             <div>
+              {origURL && (
+                <img
+                  src={origURL}
+                  alt="Original"
+                  style={{ maxWidth: "100%", borderRadius: "6px", border: "1px solid var(--border)", marginBottom: "10px", display: "block" }}
+                />
+              )}
               <div style={{ fontFamily: "var(--font-mono), monospace", fontSize: "11px", color: "var(--muted-fg)" }}>
                 {origW} x {origH}px
               </div>

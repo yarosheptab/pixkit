@@ -82,9 +82,10 @@ export default function CropPage() {
   function onMouseDown(e: React.MouseEvent<HTMLCanvasElement>) {
     const canvas = previewRef.current!
     const rect = canvas.getBoundingClientRect()
-    const scale = imgNatW / canvas.width
-    const mx = (e.clientX - rect.left) * scale
-    const my = (e.clientY - rect.top) * scale
+    const scaleX = imgNatW / rect.width
+    const scaleY = imgNatH / rect.height
+    const mx = (e.clientX - rect.left) * scaleX
+    const my = (e.clientY - rect.top) * scaleY
     setDragging(true)
     setDragStart({ mx, my, cx: crop.x, cy: crop.y })
   }
@@ -93,9 +94,10 @@ export default function CropPage() {
     if (!dragging) return
     const canvas = previewRef.current!
     const rect = canvas.getBoundingClientRect()
-    const scale = imgNatW / canvas.width
-    const mx = (e.clientX - rect.left) * scale
-    const my = (e.clientY - rect.top) * scale
+    const scaleX = imgNatW / rect.width
+    const scaleY = imgNatH / rect.height
+    const mx = (e.clientX - rect.left) * scaleX
+    const my = (e.clientY - rect.top) * scaleY
     const dx = mx - dragStart.mx
     const dy = my - dragStart.my
     const newX = Math.max(0, Math.min(imgNatW - crop.w, dragStart.cx + dx))

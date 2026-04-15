@@ -39,13 +39,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
-        <h2 style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.02em", color: "var(--fg)", marginTop: "36px", marginBottom: "12px" }}>
-          Tech stack
-        </h2>
-        <p style={{ fontSize: "15px", lineHeight: 1.75, color: "var(--muted-fg)" }}>
-          Next.js 15 App Router, TypeScript, Tailwind CSS v4, Canvas API, exifr,
-          gray-matter and marked for blog, deployed on Vercel.
-        </p>
       </div>
     </AppShell>
   )
